@@ -1,0 +1,33 @@
+
+
+header {
+  height: 55px;
+  background: #00B9BC;
+  padding: 0 5px;
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    div {
+      display: flex;
+      align-items: center;
+      a {
+        display: flex;
+        height: 55px;
+        line-height: 55px;
+        color: #ffffff;
+        text-decoration: none;
+
+        img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+
+      a:nth-child(n+2) {
+        margin-left: 20px;
+      }
+    }
+  }
+}
