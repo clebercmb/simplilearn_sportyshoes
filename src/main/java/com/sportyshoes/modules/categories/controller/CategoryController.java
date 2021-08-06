@@ -18,4 +18,10 @@ public class CategoryController {
         logger.info(">>>>All");
         return "categories";
     }
+
+    @GetMapping(value="/add_form")
+    String add() {
+        logger.info(">>>>All");
+        return "/categoriesAddForm";
+    }
 }

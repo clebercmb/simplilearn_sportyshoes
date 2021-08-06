@@ -1,15 +1,76 @@
+$primary: #f6f2f2;
+$secondary: #ffffff;
+$tertiary: #00B9BC;
+$quaternary: #c9c7c7;
+$alert: #f80303;
+
+$table-header: #151414;
+$table-header-border: #151414;
+$table-border: #151414;
+$row-bg: #f4f2f1;
+$header-bg: #00B9BC;
 
 .container {
   margin: 0 auto;
   max-width: 1200px;
 
+  > h1 {
+    margin-top: 20px;
+    color: #000000;
+    text-align: center;
+  }
 }
 
-h1 {
-  color: red;
+
+/***********************************
+*  Categories
+************************************/
+.container-categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  a {
+    margin-top: 10px;
+  }
+
+  table {
+    margin: 1em auto;
+    max-width: 600px;
+    border-collapse: collapse;
+
+    td, th {
+      width: auto;
+    }
+
+    td {
+      border: 1px solid $table-border;
+      padding: 0.5em;
+    }
+
+    th {
+      background: $header-bg;
+      color: white;
+      padding: 0.5em;
+      border: 1px solid $table-header-border;
+    }
+
+  }
+
+
 }
 
+/*********
+* Category Add Form
+******/
 
+.container-categories-add-form {
+
+  form {
+    margin: 50px auto;
+    max-width: 500px;
+  }
+}
 
 
 

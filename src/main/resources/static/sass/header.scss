@@ -19,6 +19,10 @@ header {
         color: #ffffff;
         text-decoration: none;
 
+        &:hover {
+          color: #FF7400;
+        }
+
         img {
           width: 100px;
           height: 100px;

@@ -5,12 +5,43 @@
     <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/header.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <title>Sporty Shoes</title>
 </head>
 <body>
 <div class="container">
     <header th:replace="fragments/header.html :: header"></header>
     <h1>Categories</h1>
+
+    <div class="container-categories">
+        <a class="btn btn-outline-primary" href="/categories/add_form">add category</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Action 1</th>
+                    <th>Action 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#">1</a></td>
+                    <td>Category 1</td>
+                    <td><a class="btn btn-outline-primary" href="#">change</a></td>
+                    <td><a class="btn btn-outline-warning" href="#">delete</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">2</a></td>
+                    <td>Category 2</td>
+                    <td><button class="btn btn-outline-primary" href="#">change</button></td>
+                    <td><button class="btn btn-outline-warning" href="#">delete</button></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
 </div>
 </body>
 </html>

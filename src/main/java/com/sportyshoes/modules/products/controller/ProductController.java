@@ -15,7 +15,13 @@ public class ProductController {
 
     @GetMapping
     String all() {
-        logger.info(">>>>All");
+        logger.info(">>>>/products.All");
         return "products";
+    }
+
+    @GetMapping(value="/add_form")
+    String add() {
+        logger.info(">>>>All");
+        return "/productAddForm";
     }
 }

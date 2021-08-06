@@ -11,35 +11,19 @@
 <body>
 <div class="container">
     <header th:replace="fragments/header.html :: header"></header>
-    <h1>Categories</h1>
+    <h1>Add Category</h1>
 
-    <div class="container-categories">
-        <a class="btn btn-primary" href="#">add category</a>
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Action 1</th>
-                    <th>Action 2</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="#">1</a></td>
-                    <td>Category 1</td>
-                    <td><a class="btn btn-outline-primary" href="#">change</a></td>
-                    <td><a class="btn btn-outline-warning" href="#">delete</a></td>
-                </tr>
-                <tr>
-                    <td><a href="#">2</a></td>
-                    <td>Category 2</td>
-                    <td><button class="btn btn-outline-primary" href="#">change</button></td>
-                    <td><button class="btn btn-outline-warning" href="#">delete</button></td>
-                </tr>
-            </tbody>
+    <div class="container-categories-add-form">
 
-        </table>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Category</label>
+                <input type="text" class="form-control" id="name"  placeholder="Type category name">
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 
 </div>
