@@ -1,6 +1,5 @@
 package com.sportyshoes.modules.users.controller;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,8 +13,14 @@ public class UserController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping
-    String all() {
+    public String all() {
         logger.info(">>>>All");
         return "users";
     }
+
+    @GetMapping(value="/add_form")
+    public String add() {
+        return "usersAddForm";
+    }
+
 }

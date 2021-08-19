@@ -15,14 +15,25 @@
 
     <div class="container-categories-add-form">
 
-        <form>
+        <form method="post" th:action="@{/categories/saveCategory}" action="#" th:object="${category}">
             <div class="mb-3">
-                <label for="name" class="form-label">Category</label>
-                <input type="text" class="form-control" id="name"  placeholder="Type category name">
 
+                <input type="hidden" name="id" th:field="*{id}"/>
+
+
+                <div  th:if="${update} and not ${category.id}">
+                    <p>Product not found</p>
+                </div>
+
+                <div  th:if=" (${update} and ${category.id}) or ${create}">
+                    <label for="name" class="form-label">Category</label>
+                    <input type="text" class="form-control" id="name"  placeholder="Type category name" th:field="*{name}"/>
+                    <br/>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+
         </form>
     </div>
 

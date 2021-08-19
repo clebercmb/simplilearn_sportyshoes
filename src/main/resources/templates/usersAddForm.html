@@ -11,25 +11,31 @@
 <body>
 <div class="container">
     <header th:replace="fragments/header.html :: header"></header>
-    <h1>Add Product</h1>
+    <h1>Add Users</h1>
 
     <div class="container-categories-add-form">
 
         <form>
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name"  placeholder="Type product name">
+                <input type="text" class="form-control" id="name"  placeholder="Type user name">
             </div>
 
             <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
-                <select id="category" class="form-select" aria-label="Default select example">
-                    <option selected>Select Category</option>
-                    <option value="1">Category 1</option>
-                    <option value="2">Category 2</option>
-                    <option value="3">Category 3</option>
-                </select>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email"  placeholder="Type user's email">
             </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password"  placeholder="Type password">
+            </div>
+
+            <div class="mb-3">
+                <label for="passwordConfirmation" class="form-label">Confirm password</label>
+                <input type="password" class="form-control" id="passwordConfirmation"  placeholder="Confirm password">
+            </div>
+
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

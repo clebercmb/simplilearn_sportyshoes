@@ -25,6 +25,7 @@ $header-bg: #00B9BC;
 /***********************************
 *  Categories
 ************************************/
+/*
 .container-categories {
   display: flex;
   flex-direction: column;
@@ -59,7 +60,7 @@ $header-bg: #00B9BC;
 
 
 }
-
+*/
 /*********
 * Category Add Form
 ******/
@@ -73,6 +74,15 @@ $header-bg: #00B9BC;
 }
 
 
+
+
+/******
+* Login
+*****/
+
+.container-login {
+  max-width: 600px;
+}
 
 
 
