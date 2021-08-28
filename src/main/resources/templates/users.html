@@ -28,31 +28,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><a href="#">1</a></td>
-                <td colspan="2">Hulk</td>
-                <td colspan="2">hulk@gmail.com</td>
-                <td>user</td>
-                <td><a class="btn btn-outline-primary" href="#">change</a></td>
-                <td><a class="btn btn-outline-warning" href="#">delete</a></td>
-            </tr>
-            <tr>
-                <td><a href="#">2</a></td>
-                <td colspan="2">Tony Stark</td>
-                <td colspan="2">tony.stark@gmail.com</td>
-                <td>admin</td>
-                <td><a class="btn btn-outline-primary" href="#">change</a></td>
-                <td><a class="btn btn-outline-warning" href="#">delete</a></td>
-            </tr>
+                <tr th:each="user : ${users}">
+                    <td><a href="#"  th:text="${user.id}">1</a></td>
+                    <td colspan="2" th:text="${user.name}">Hulk</td>
+                    <td colspan="2" th:text="${user.email}">hulk@gmail.com</td>
+                    <td th:text="${user.userType}">ADMIN</td>
+                    <td><a class="btn btn-outline-primary" th:href="@{/users/{id}/edit(id = ${user.id})}">change</a></td>
+                    <td><a class="btn btn-outline-warning" th:href="@{/users/{id}/delete(id = ${user.id})}">delete</a></td>
+                </tr>
 
-            <tr>
-                <td><a href="#">2</a></td>
-                <td colspan="2">Thor</td>
-                <td colspan="2">thor@gmail.com</td>
-                <td>user</td>
-                <td><a class="btn btn-outline-primary" href="#">change</a></td>
-                <td><a class="btn btn-outline-warning" href="#">delete</a></td>
-            </tr>
+
             </tbody>
 
         </table>
