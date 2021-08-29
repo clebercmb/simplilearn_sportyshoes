@@ -4,6 +4,7 @@ import com.sportyshoes.modules.users.dto.UserDto;
 import com.sportyshoes.modules.users.entity.User;
 import com.sportyshoes.modules.users.repository.UserRepository;
 import com.sportyshoes.share.SportyShoesException;
+import com.sportyshoes.share.SportyShoesResourceAlreadyExistException;
 import com.sportyshoes.share.SportyShoesResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,13 +23,13 @@ public class CreateUserService {
     }
 
 
-    public UserDto execute(UserDto userDto) throws SportyShoesException {
+    public UserDto execute(UserDto userDto) throws SportyShoesResourceAlreadyExistException {
 
 
         Optional<User> hasUserWithEmail = userRepository.findByEmail(userDto.getEmail());
 
         if(hasUserWithEmail.isPresent()) {
-            throw new SportyShoesException("Email already used. Try another one");
+            throw new SportyShoesResourceAlreadyExistException("Email already used. Try another one");
         }
 
         User user = User.builder().

@@ -10,6 +10,7 @@ import com.sportyshoes.modules.users.services.CreateUserService;
 import com.sportyshoes.modules.users.services.ReadUserByEmailService;
 import com.sportyshoes.modules.users.services.ReadUserService;
 import com.sportyshoes.share.SportyShoesException;
+import com.sportyshoes.share.SportyShoesResourceAlreadyExistException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,14 +51,19 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView("login");
         modelAndView.addObject("user", new UserDto());
         modelAndView.addObject("login_error", "" );
+        modelAndView.addObject("is_sign_in", true);
         return modelAndView;
     }
 
     @RequestMapping(path = "/sign_up", method = RequestMethod.POST)
-    public String signUp(UserDto userDto) throws SportyShoesException  {
-
-        UserDto userDtoCreated =  createUserService.execute(userDto);
-
+    public String signUp(UserDto userDto, Model model) throws SportyShoesException  {
+        try {
+            UserDto userDtoCreated = createUserService.execute(userDto);
+        } catch (SportyShoesResourceAlreadyExistException e)  {
+            model.addAttribute("login_error_sign_up", "Email already used. Try another one." );
+            model.addAttribute("is_sign_in", false);
+            return "login";
+        }
         return "redirect:/login";
     }
 
@@ -78,7 +84,7 @@ public class LoginController {
 
             return "redirect:/";
         }
-
+        model.addAttribute("is_sign_in", true);
         model.addAttribute("login_error", "Email or Password invalid. Try again" );
         return "login";
     }
