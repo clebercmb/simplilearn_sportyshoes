@@ -11,6 +11,12 @@
             <a href="/purchases">Purchase</a>
         </div>
         <div>
+            <div th:if="${session.containsKey('email')}" th:text="Logout"></div>
+
+            <div th:if="${session.containsKey('email')}" th:text="${session.email}"></div>
+            <div th:text="${session.containsKey('emailssd')}"></div>
+            <div th:text="${session.isEmpty()}"></div>
+            <div th:if="${!session.containsKey('email')}" >Logout</div>
             <a href="/login">Login</a>
         </div>
     </nav>
