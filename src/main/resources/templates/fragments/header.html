@@ -5,19 +5,18 @@
             <a href="/">
                 <!--img class="logo" src="/images/shoes.svg" alt="Logo"/-->Sporty Shoes
             </a>
-            <a href="/categories">Category</a>
-            <a href="/products">Product</a>
-            <a href="/users">User</a>
-            <a href="/purchases">Purchase</a>
+
+            <a th:if="${session.containsKey('userType') and session.userType == 'ADMIN' }" href="/categories">Category</a>
+            <a th:if="${session.containsKey('userType') and session.userType == 'ADMIN' }" href="/products">Product</a>
+            <a th:if="${session.containsKey('userType') and session.userType == 'ADMIN' }" href="/users">User</a>
+            <a th:if="${session.containsKey('userType') and session.userType == 'USER' }" href="/purchases">Purchase</a>
+
         </div>
         <div>
-            <div th:if="${session.containsKey('email')}" th:text="Logout"></div>
-
             <div th:if="${session.containsKey('email')}" th:text="${session.email}"></div>
-            <div th:text="${session.containsKey('emailssd')}"></div>
-            <div th:text="${session.isEmpty()}"></div>
-            <div th:if="${!session.containsKey('email')}" >Logout</div>
-            <a href="/login">Login</a>
+            <a href="/logout" th:if="${!session.isEmpty()}" >Logout</a>
+            <a href="/login" th:if="${session.isEmpty()}" >Login</a>
+
         </div>
     </nav>
 

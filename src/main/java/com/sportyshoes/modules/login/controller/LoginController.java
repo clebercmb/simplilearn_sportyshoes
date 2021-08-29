@@ -81,6 +81,7 @@ public class LoginController {
 
             session.setAttribute("email", user.getEmail());
             session.setAttribute("userType", user.getUserType().userType);
+            session.setAttribute("user", userDto);
 
             return "redirect:/";
         }
