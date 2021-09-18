@@ -24,14 +24,14 @@ import java.util.Set;
 public class Purchase {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
     private User user;
 
     //mappedBy makes Product the owner of the relationship
-    @OneToMany(mappedBy = "purchase")
+    @OneToMany(mappedBy = "purchase", cascade = CascadeType.REMOVE)
     @Setter(AccessLevel.NONE)
     private List<ProductPurchase> productPurchaseList = new ArrayList<>();
     //private Set<ProductPurchase> productPurchaseList = new HashSet<>();
@@ -54,6 +54,7 @@ public class Purchase {
         for ( ProductPurchase productPurchase: productPurchaseList ) {
 
             ProductPurchaseDto productPurchaseDto = new ProductPurchaseDto();
+            productPurchaseDto.setId(productPurchase.getId());
             productPurchaseDto.setPurchase(purchaseDto);
             productPurchaseDto.setProduct(productPurchase.getProduct().toDto());
             productPurchaseDto.setQuantity(productPurchase.getQuantity());

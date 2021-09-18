@@ -7,6 +7,7 @@ import com.sportyshoes.modules.products.services.ReadProductService;
 import com.sportyshoes.modules.purchases.dto.ProductPurchaseDto;
 import com.sportyshoes.modules.purchases.dto.PurchaseDto;
 import com.sportyshoes.modules.purchases.services.CreatePurchaseService;
+import com.sportyshoes.modules.purchases.services.DeletePurchaseService;
 import com.sportyshoes.modules.purchases.services.ReadPurchaseByUserService;
 import com.sportyshoes.modules.users.dto.UserDto;
 import com.sportyshoes.modules.users.entity.User;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,18 +36,22 @@ public class PurchasesController {
     private final ReadPurchaseByUserService readPurchaseByUserService;
     private final ReadProductService readProductService;
     private final CreatePurchaseService createPurchaseService;
+    private final DeletePurchaseService deletePurchaseService;
+
 
     @Autowired
     public PurchasesController(ReadPurchaseByUserService readPurchaseByUserService,
                                ReadProductService readProductService,
-                               CreatePurchaseService createPurchaseService) {
+                               CreatePurchaseService createPurchaseService,
+                               DeletePurchaseService deletePurchaseService) {
         this.readPurchaseByUserService = readPurchaseByUserService;
         this.readProductService = readProductService;
         this.createPurchaseService = createPurchaseService;
+        this.deletePurchaseService = deletePurchaseService;
     }
 
-    @GetMapping(value = {"/{userId}"})
-    String all(@PathVariable Long userId, HttpSession session, Model model) {
+    @GetMapping()
+    String all(HttpSession session, Model model) {
         logger.info(">>>>All");
         UserDto userDto = (UserDto) session.getAttribute("user");
 
@@ -112,7 +118,23 @@ public class PurchasesController {
 
         createPurchaseService.execute(purchaseDto);
 
-        return "redirect:/products";
+        return "redirect:/purchases";
+    }
+
+
+
+    @GetMapping(value = {"/{id}/delete"})
+    public String delete(@PathVariable Long id, HttpSession session) {
+        logger.info(">>>>delete order id={}", id);
+
+        UserDto userDto = (UserDto) session.getAttribute("user");
+
+        PurchaseDto purchaseDto = new PurchaseDto();
+        purchaseDto.setUser(userDto);
+
+        deletePurchaseService.execute(id);
+
+        return "redirect:/purchases";
     }
 
 

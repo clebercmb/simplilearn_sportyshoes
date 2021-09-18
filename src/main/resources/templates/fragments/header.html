@@ -9,7 +9,8 @@
             <a th:if="${session.containsKey('userType') and session.userType == 'ADMIN' }" href="/categories">Category</a>
             <a th:if="${session.containsKey('userType') and session.userType == 'ADMIN' }" href="/products">Product</a>
             <a th:if="${session.containsKey('userType') and session.userType == 'ADMIN' }" href="/users">User</a>
-            <a th:if="${session.containsKey('userId')}"  th:href="@{/purchases/{id}(id = ${session.userId})}">Purchase</a>
+            <a href="/purchases" th:if="${!session.isEmpty()}" >Purchase</a>
+            <!--a th:if="${session.containsKey('email')}"  th:href="@{/purchases/{id}(id = ${session.userId})}">Purchase</a-->
         </div>
         <div>
             <div th:if="${session.containsKey('email')}" th:text="${session.email}"></div>
