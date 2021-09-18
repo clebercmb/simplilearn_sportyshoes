@@ -1,8 +1,5 @@
 package com.sportyshoes.modules.purchases.services;
 
-import com.sportyshoes.modules.categories.entity.Category;
-import com.sportyshoes.modules.categories.repository.CategoryRepository;
-import com.sportyshoes.modules.products.dto.ProductDto;
 import com.sportyshoes.modules.products.entity.Product;
 import com.sportyshoes.modules.products.repository.ProductRepository;
 import com.sportyshoes.modules.purchases.dto.ProductPurchaseDto;
@@ -12,7 +9,7 @@ import com.sportyshoes.modules.purchases.entity.Purchase;
 import com.sportyshoes.modules.purchases.repository.PurchaseRepository;
 import com.sportyshoes.modules.users.entity.User;
 import com.sportyshoes.modules.users.repository.UserRepository;
-import com.sportyshoes.share.SportyShoesResourceNotFoundException;
+import com.sportyshoes.share.exceptions.SportyShoesResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

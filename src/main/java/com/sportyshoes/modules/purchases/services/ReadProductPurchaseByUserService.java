@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ReadPurchaseByUserService {
+public class ReadProductPurchaseByUserService {
 
 
     private final PurchaseRepository purchaseRepository;
@@ -23,8 +23,8 @@ public class ReadPurchaseByUserService {
 
 
     @Autowired
-    public ReadPurchaseByUserService(PurchaseRepository purchaseRepository,
-                                     UserRepository userRepository) {
+    public ReadProductPurchaseByUserService(PurchaseRepository purchaseRepository,
+                                            UserRepository userRepository) {
         this.purchaseRepository = purchaseRepository;
         this.userRepository = userRepository;
     }

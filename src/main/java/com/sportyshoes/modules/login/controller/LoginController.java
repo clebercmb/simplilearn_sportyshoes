@@ -2,15 +2,12 @@ package com.sportyshoes.modules.login.controller;
 
 
 import com.sportyshoes.modules.login.services.ValidateLoginService;
-import com.sportyshoes.modules.products.dto.ProductDto;
 import com.sportyshoes.modules.users.dto.UserDto;
-import com.sportyshoes.modules.users.entity.User;
-import com.sportyshoes.modules.users.repository.UserRepository;
+import com.sportyshoes.modules.users.entity.UserType;
 import com.sportyshoes.modules.users.services.CreateUserService;
 import com.sportyshoes.modules.users.services.ReadUserByEmailService;
-import com.sportyshoes.modules.users.services.ReadUserService;
-import com.sportyshoes.share.SportyShoesException;
-import com.sportyshoes.share.SportyShoesResourceAlreadyExistException;
+import com.sportyshoes.share.exceptions.SportyShoesException;
+import com.sportyshoes.share.exceptions.SportyShoesResourceAlreadyExistException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +55,7 @@ public class LoginController {
     @RequestMapping(path = "/sign_up", method = RequestMethod.POST)
     public String signUp(UserDto userDto, Model model) throws SportyShoesException  {
         try {
+            userDto.setUserType(UserType.USER);
             UserDto userDtoCreated = createUserService.execute(userDto);
         } catch (SportyShoesResourceAlreadyExistException e)  {
             model.addAttribute("login_error_sign_up", "Email already used. Try another one." );
@@ -81,7 +79,8 @@ public class LoginController {
 
             session.setAttribute("email", user.getEmail());
             session.setAttribute("userType", user.getUserType().userType);
-            session.setAttribute("user", userDto);
+            session.setAttribute("userId", user.getId());
+            session.setAttribute("user", user);
 
             return "redirect:/";
         }

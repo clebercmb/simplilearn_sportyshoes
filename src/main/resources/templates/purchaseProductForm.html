@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header.html :: header"></header>
+    <h1>Add Product</h1>
+
+    <div class="container-categories-add-form">
+
+        <form method="post" th:action="@{/purchases/add}"  th:object="${productPurchase}">
+
+            <input type="hidden" class="form-control" id="product"  placeholder="Type product name" th:field="*{product.id}"/>
+            <div class="mb-3">
+                <label class="form-label">Name: </label>
+                <label th:text="*{product?.name}"></label>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Category: </label>
+                <label th:text="*{product?.category?.name}"></label>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price: </label>
+                <label th:text="*{product?.price}"></label>
+            </div>
+
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="text" class="form-control" id="quantity"  placeholder="Type product quantity" th:field="*{quantity}"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

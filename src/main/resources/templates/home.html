@@ -23,32 +23,20 @@
                     <th colspan="2">Name</th>
                     <th colspan="2">Category</th>
                     <th class="text-end">Price</th>
-                    <th>Action 2</th>
+                    <th th:if="${!session.isEmpty()}">Action 2</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="align-middle">1</td>
-                    <td class="align-middle" colspan="2">Product 1</td>
-                    <td class="align-middle" colspan="2">Category 1</td>
-                    <td class="text-end align-middle">$ 100.00</td>
-                    <td class="align-middle"><a class="btn btn-outline-primary" href="#">buy</a></td>
-                </tr>
-                <tr>
-                    <td class="align-middle">2</td>
-                    <td class="align-middle" colspan="2">Product 2</td>
-                    <td class="align-middle" colspan="2">Category 1</td>
-                    <td class="text-end align-middle">$ 40.00</td>
-                    <td class="align-middle"><a class="btn btn-outline-primary" href="#">buy</a></td>
-                </tr>
+                    <tr th:each="product : ${products}">
+                        <td><a href="#"  th:text="${product.id}">2</a></td>
+                        <td colspan="2" th:text="${product.name}">Product 3</td>
+                        <td colspan="2" th:text="${product.category.name}">Category 2</td>
+                        <td class="text-end" th:text="${product.priceFormatted}">$ 33.00</td>
+                        <!--td><a class="btn btn-outline-primary" th:href="@{/purchase/{id}(id = ${product.id})}">buy</a></td-->
 
-                <tr>
-                    <td class="align-middle">3</td>
-                    <td class="align-middle" colspan="2">Product 3</td>
-                    <td class="align-middle" colspan="2">Category 2</td>
-                    <td class="text-end align-middle">$ 33.00</td>
-                    <td class="align-middle" ><a class="btn btn-outline-primary" href="#">buy</a></td>
-                </tr>
+                        <td th:if="${!session.isEmpty()}"><a class="btn btn-outline-primary" th:href="@{/purchases/product/{id}(id = ${product.id})}">buy</a></td>
+
+                    </tr>
                 </tbody>
 
             </table>

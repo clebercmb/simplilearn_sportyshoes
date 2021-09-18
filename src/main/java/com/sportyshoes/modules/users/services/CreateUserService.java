@@ -3,9 +3,7 @@ package com.sportyshoes.modules.users.services;
 import com.sportyshoes.modules.users.dto.UserDto;
 import com.sportyshoes.modules.users.entity.User;
 import com.sportyshoes.modules.users.repository.UserRepository;
-import com.sportyshoes.share.SportyShoesException;
-import com.sportyshoes.share.SportyShoesResourceAlreadyExistException;
-import com.sportyshoes.share.SportyShoesResourceNotFoundException;
+import com.sportyshoes.share.exceptions.SportyShoesResourceAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

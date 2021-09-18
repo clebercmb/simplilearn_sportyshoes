@@ -27,28 +27,41 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><a href="#">1</a></td>
-                <td colspan="2">Product 1</td>
-                <td colspan="2">Category 1</td>
-                <td class="text-end">$ 100.00</td>
-                <td><a class="btn btn-outline-warning" href="#">delete</a></td>
-            </tr>
-            <tr>
-                <td><a href="#">2</a></td>
-                <td colspan="2">Product 2</td>
-                <td colspan="2">Category 1</td>
-                <td class="text-end">$ 40.00</td>
-                <td><a class="btn btn-outline-warning" href="#">delete</a></td>
-            </tr>
+                <tr>
+                    <td><a href="#">1</a></td>
+                    <td colspan="2">Product 1</td>
+                    <td colspan="2">Category 1</td>
+                    <td class="text-end">$ 100.00</td>
+                    <td><a class="btn btn-outline-warning" href="#">delete</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">2</a></td>
+                    <td colspan="2">Product 2</td>
+                    <td colspan="2">Category 1</td>
+                    <td class="text-end">$ 40.00</td>
+                    <td><a class="btn btn-outline-warning" href="#">delete</a></td>
+                </tr>
 
-            <tr>
-                <td><a href="#">2</a></td>
-                <td colspan="2">Product 3</td>
-                <td colspan="2">Category 2</td>
-                <td class="text-end">$ 33.00</td>
-                <td><a class="btn btn-outline-warning" href="#">delete</a></td>
-            </tr>
+                <tr>
+                    <td><a href="#">2</a></td>
+                    <td colspan="2">Product 3</td>
+                    <td colspan="2">Category 2</td>
+                    <td class="text-end">$ 33.00</td>
+                    <td><a class="btn btn-outline-warning" href="#">delete</a></td>
+                </tr>
+
+
+                <tr th:each="purchase : ${purchases}">
+                    <td><a href="#"  th:text="${purchase.id}">1</a></td>
+
+                    <td colspan="2">Product 3</td>
+                    <td colspan="2">Category 2</td>
+                    <td class="text-end">$ 33.00</td>
+                    <td><a class="btn btn-outline-warning" href="#">delete</a></td>
+
+
+                </tr>
+
             </tbody>
 
         </table>

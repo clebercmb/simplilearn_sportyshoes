@@ -1,4 +1,4 @@
-package com.sportyshoes.share;
+package com.sportyshoes.share.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
