@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Sporty Shoes</title>
+</head>
+<body>
+<div class="container">
+    <header th:replace="fragments/header.html :: header"></header>
+    <h1>Update User</h1>
+
+    <div class="container-categories-add-form">
+
+        <form method="post" th:action="@{/users/{id}/save(id=${user.id})}"  th:object="${user}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name"  placeholder="Type user name" th:field="*{name}">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email"  placeholder="Type user's email" th:field="*{email}">
+            </div>
+
+            <div class="mb-3">
+                <label for="userType" class="form-label">Type</label>
+                <select id="userType" class="form-select" aria-label="Default select example" th:field="*{userType}">
+
+                    <option th:value="ADMIN" th:text="ADMIN"/>
+                    <option th:value="USER" th:text="USER"/>
+
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="password"  placeholder="Type password">
+            </div>
+
+            <!--div class="mb-3">
+                <label for="passwordConfirmation" class="form-label">Confirm password</label>
+                <input type="password" name="passwordConfirmation" class="form-control" id="passwordConfirmation"  placeholder="Confirm password">
+            </div-->
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

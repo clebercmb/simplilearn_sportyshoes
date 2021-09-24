@@ -56,14 +56,13 @@ public class CategoryController {
         logger.info(">>>>All");
         ModelAndView modelAndView = new ModelAndView("categoriesAddForm");
         modelAndView.addObject("create", true);
+        modelAndView.addObject("category", CategoryDto.builder().id(-1L).build());
 
         return modelAndView;
     }
 
-    //  @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     @RequestMapping(path = {"/edit", "/edit/{id}"})
     public ModelAndView read(@PathVariable Optional<Long> id) {
-
         ModelAndView modelAndView = new ModelAndView("categoriesAddForm");
         if(id.isPresent()) {
             Optional<CategoryDto> categoryDtoOptional = readCategoryService.execute(id.get());
@@ -77,15 +76,13 @@ public class CategoryController {
             modelAndView.addObject("create", true);
             modelAndView.addObject("category", CategoryDto.builder().build());
         }
-
         return modelAndView;
-
     }
 
 
     @RequestMapping(path = "/saveCategory", method = RequestMethod.POST)
     public String createOrUpdateCategory(CategoryDto category) {
-        if (category.getId() == null) {
+        if (category.getId() == null || category.getId() < 0) {
             createCategoryService.execute(category);
         } else {
             updateCategoryService.execute(category);
